@@ -430,10 +430,12 @@ build_exit_value=0
 
 echo "Building Open XDMoD..."
 build_package_path="$XDMOD_SOURCE_DIR/open_xdmod/build_scripts/build_package.php"
+pushd $XDMOD_SOURCE_DIR
 "$build_package_path" --module xdmod
 if [ $? != 0 ]; then
     build_exit_value=2
 fi
+popd
 
 if [ "$repo_type" == "module" ]; then
     echo "Building $XDMOD_MODULE_NAME module..."
